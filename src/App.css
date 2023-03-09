@@ -1,0 +1,148 @@
+.App {
+  text-align: left;
+}
+.App input[type="text"]{
+ outline: none;
+ border: 1px solid white;
+ padding: 0.4rem 1rem;
+ width: 400px;
+ border-radius: 10px;
+}
+input[type="checkbox"] {
+  position: relative;
+  width: 1.5em;
+  height: 1.5em;
+  color: #333;
+  border: 1px solid gray;
+  border-radius: 50%;
+  appearance: none;
+  outline: 0;
+  cursor: pointer;
+  transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+}
+
+input[type="checkbox"]::before{
+  position: absolute;
+  content: '';
+  display: block;
+  top: -5px;
+  left: 7px;
+  width: 8px;
+  height: 14px;
+  border-style: solid;
+
+  border-color:#2a833d;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+input[type="checkbox"]:checked:before{
+opacity: 1;
+}
+input[type="checkbox"]:checked{
+  color: #2e2d1f;
+  border-color: rgb(31, 63, 63);
+  background: rgb(226, 226, 226);
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.App .todo{
+  display:flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items:center;
+}
+.App .todo label p{
+  word-wrap: break-word;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size:1.2rem;
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.Todo-card{
+  height: 400px;
+  width: 400px;
+  border:1px solid #a8b0be;
+  border-radius: 1rem;
+  background-color: #282c34;
+  margin: 1rem;
+  overflow: scroll;
+
+}
+
+.Todo-card::-webkit-scrollbar {
+  width: 0.5rem;
+}
+ 
+.Todo-card::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0);
+}
+ 
+.Todo-card::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.582);
+  border-radius: 10px;
+}
+.Todo-card div{
+  padding: 0 1rem;
+  clip-path: inset(0 -100vmax);
+  transition: all 0.3s ease-in-out;
+}
+
+.Todo-card div:hover,
+.Todo-card div:has(input[type="checkbox"]:checked){
+  background-color: #61dafb;
+  /* box-shadow: 0px 0px 1px 1px rgba(31, 31, 31, 0.644); */
+  box-shadow: 0 0 0 100vmax #61dafb ,0px 0px 1px 1px rgba(31, 31, 31, 0.644);
+  clip-path: inset(0 -100vmax);
+}
+.App .button{
+  display: inline;
+}
+.App .button button.danger{
+  background-color: #d32d2d8a;
+}
+.App .button button.primary{
+  background-color: #106177;
+}
+.App .button button{
+  transition: all 0.3s ease-in-out;
+  color: aliceblue;
+  text-shadow: 1px 1px 1.5px #333;
+  outline: none;
+  border:1px solid #d4d4d450;
+  margin: 0.1rem;
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+}
+.App .button button:hover{
+  filter: brightness(1.2);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
