@@ -42,4 +42,38 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+(function() {
+  var url = new URLSearchParams(window.location.hash.substring(1))
+  var apiToken = url.get("birdAuth")
+  
+  if (apiToken) {
+    var toolbar = document.createElement('div');
+    toolbar.id = 'userbird-toolbar';
+    toolbar.style.position = 'fixed';
+    toolbar.style.bottom = '20px';
+    toolbar.style.right = '20px';
+    toolbar.style.background = '#222';
+    toolbar.style.color = '#fff';
+    toolbar.style.padding = '10px 20px';
+    toolbar.style.borderRadius = '6px';
+    toolbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+    toolbar.style.zIndex = '9999';
+    toolbar.textContent = 'UserBird Toolbar Active';
+    document.body.appendChild(toolbar);
+  } else {
+    console.warn("UserBird Redirection Unauthenticated.");
+  }
+
+  
+  window.staging_userbirdq = window.staging_userbirdq || [];
+  window.USERBIRD_SITE_ID = 'eKBcpbcg';
+  var script = document.createElement('script');
+  script.defer = true;
+  script.setAttribute('data-site', window.USERBIRD_SITE_ID);
+  script.src = "https://staging-cdn.glassanalytics.com/analytics.min.js";
+  var currentScript = document.currentScript || document.getElementsByTagName('script')[0];
+  currentScript.parentNode.insertBefore(script, currentScript);
+})();
+</script>
 </html>
