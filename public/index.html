@@ -93,6 +93,16 @@
     };
   } else {
     console.warn("UserBird Redirection Unauthenticated.");
-  }})();
+  }
+
+  window.staging_userbirdq = window.staging_userbirdq || [];
+  window.USERBIRD_SITE_ID = 'eKBcpbcg';
+  var script = document.createElement('script');
+  script.defer = true;
+  script.setAttribute('data-site', window.USERBIRD_SITE_ID);
+  script.src = "https://staging-cdn.userbird.com/analytics.min.js";
+  var currentScript = document.currentScript || document.getElementsByTagName('script')[0];
+  currentScript.parentNode.insertBefore(script, currentScript);
+})();
 </script>
 </html>
