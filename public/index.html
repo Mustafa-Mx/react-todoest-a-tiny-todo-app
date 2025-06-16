@@ -59,21 +59,40 @@
     toolbar.style.borderRadius = '6px';
     toolbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
     toolbar.style.zIndex = '9999';
+    toolbar.style.cursor = 'move';
     toolbar.textContent = 'UserBird Toolbar Active';
     document.body.appendChild(toolbar);
+
+    toolbar.onmousedown = function(e) {
+      e.preventDefault();
+      var shiftX = e.clientX - toolbar.getBoundingClientRect().left;
+      var shiftY = e.clientY - toolbar.getBoundingClientRect().top;
+
+      function moveAt(pageX, pageY) {
+        toolbar.style.left = pageX - shiftX + 'px';
+        toolbar.style.top = pageY - shiftY + 'px';
+        toolbar.style.right = 'auto';
+        toolbar.style.bottom = 'auto';
+        toolbar.style.position = 'fixed';
+      }
+
+      function onMouseMove(e) {
+        moveAt(e.clientX, e.clientY);
+      }
+
+      document.addEventListener('mousemove', onMouseMove);
+
+      document.onmouseup = function() {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.onmouseup = null;
+      };
+    };
+
+    toolbar.ondragstart = function() {
+      return false;
+    };
   } else {
     console.warn("UserBird Redirection Unauthenticated.");
-  }
-
-  
-  window.staging_userbirdq = window.staging_userbirdq || [];
-  window.USERBIRD_SITE_ID = 'eKBcpbcg';
-  var script = document.createElement('script');
-  script.defer = true;
-  script.setAttribute('data-site', window.USERBIRD_SITE_ID);
-  script.src = "https://staging-cdn.glassanalytics.com/analytics.min.js";
-  var currentScript = document.currentScript || document.getElementsByTagName('script')[0];
-  currentScript.parentNode.insertBefore(script, currentScript);
-})();
+  }})();
 </script>
 </html>
