@@ -55,14 +55,7 @@
         Authorization: 'Bearer ' + apiToken
       },
     });
-   var verificationStatus = false;
   if (response.ok) {
-    const data = await response.json();
-    verificationStatus = data.verified;
-  } else {
-    console.error("UserBird Redirection Unauthenticated.");
-  }
-  if (verificationStatus) {
     var toolbar = document.createElement('div');
     toolbar.id = 'userbird-toolbar';
     toolbar.style.position = 'fixed';
