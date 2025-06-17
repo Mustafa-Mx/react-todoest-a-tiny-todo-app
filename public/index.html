@@ -46,7 +46,7 @@
 (async function() {
   var url = new URLSearchParams(window.location.hash.substring(1))
   var apiToken = url.get("birdAuth")
-  if(apiToken) {
+  if(apiToken && site_id && workspace_id) {
   
   const response = await fetch("https://staging-api.userbird.com/api/profile/",{
     method: 'GET',
@@ -68,17 +68,14 @@
     toolbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
     toolbar.style.zIndex = '9999';
     toolbar.style.cursor = 'move';
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('width', '24');
-    svg.setAttribute('height', '24');
-    svg.setAttribute('viewBox', '0 0 24 24');
-    svg.style.position = 'absolute';
-    svg.style.top = '0';
-    svg.style.left = '0';
-    svg.style.fill = '#fff';
-    svg.innerHTML = "<path d='M12 2C8.13 2 5 5.13 5 9C5 12.87 8.13 16 12 16C15.88 16 19 12.87 19 9C19 5.13 15.88 2 12 2M12 4C7.59 4 4 7.59 4 12C4 16.41 7.59 20 12 20C16.41 20 20 16.41 20 12C20 7.59 16.41 4 12 4Z' />"
-    toolbar.appendChild(svg);
-    toolbar.textContent = 'UserBird Toolbar Active';
+
+    var innerHtmlString = 
+                      <div style={"display:flex;justify-content:space-around;align-items:center;"}>
+                           <p> User Bird Logo</p>
+                           |
+                           <a href="http://localhost:5173/HRkSTkZF/site/eKBcpbcg" style="text-decoration:none;color:white;">Dashboard</a>
+                         </div>
+    toolbar.appendChild(innerHtmlString);
     document.body.appendChild(toolbar);
 
     toolbar.onmousedown = function(e) {
