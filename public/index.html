@@ -46,7 +46,7 @@
 <script src="https://exquisite-seahorse-3a770e.netlify.app/dist/userbird-toolbar.umd.js"></script>
 <script>
 window.addEventListener('message', (event) => {
-        console.log('Iframe received:', event.data);
+        alert(event.origin);
 
         // Respond to parent
         event.source.postMessage(
