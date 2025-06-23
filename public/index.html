@@ -63,6 +63,7 @@ const cb = () => {
   const toolbar = new UserBirdToolbar({siteId: 'eKBcpbcg', workspaceId: 'HRkSTkZF'});
   toolbar.apiToken = authenticated;
   toolbar.init();
+  try {
   (function() {
     window.staging_userbirdq = window.staging_userbirdq || [];
     window.USERBIRD_SITE_ID = 'eKBcpbcg';
@@ -73,6 +74,9 @@ const cb = () => {
     var currentScript = document.currentScript || document.getElementsByTagName('script')[0];
     currentScript.parentNode.insertBefore(script, currentScript);
   })();
+  }
+catch (error) {
+console.log(error)}
 }
 </script>
 </html>
