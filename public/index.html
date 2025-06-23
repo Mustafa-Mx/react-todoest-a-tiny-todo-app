@@ -51,7 +51,7 @@ const cb = (token) => {
   toolbar.apiToken = token;
   toolbar.init();
 }
-  bindEvent(this.window,cb)
+  window.bindEvent(this.window,cb)
 
   (function() {
     window.staging_userbirdq = window.staging_userbirdq || [];
