@@ -44,24 +44,15 @@
   </body>
 
 <script src="https://exquisite-seahorse-3a770e.netlify.app/dist/userbird-toolbar.umd.js"></script>
-<script>
- (function() {
-   window.addEventListener('message', 
-  (event) => {
-     if (event.origin !== 'http://localhost:5173') return; 
-     authenticated = JSON.parse(event.data).token;
-     console.log(event.data);
-     cb(authenticated);
-     event.source.postMessage({ type: 'RESPONSE', text: 'Authenticared!' },event.origin);
-      }
-    )
-  })();    
-  
+<script>  
 const cb = (token) => { 
   const {UserBirdToolbar} = window.UserBirdToolbar
   const toolbar = new UserBirdToolbar({siteId: 'eKBcpbcg', workspaceId: 'HRkSTkZF'});
   toolbar.apiToken = token;
   toolbar.init();
+}
+  bindEvent(this.window,cb)
+
   (function() {
     window.staging_userbirdq = window.staging_userbirdq || [];
     window.USERBIRD_SITE_ID = 'eKBcpbcg';
@@ -72,13 +63,5 @@ const cb = (token) => {
     var currentScript = document.currentScript || document.getElementsByTagName('script')[0];
     currentScript.parentNode.insertBefore(script, currentScript);
   })();
-
-  
-//   try {
-//   
-//   }
-// catch (error) {
-// console.log(error)}
- }
 </script>
 </html>
