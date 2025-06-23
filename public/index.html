@@ -50,7 +50,7 @@
    window.addEventListener('message', 
   (event) => {
      if (event.origin !== 'http://localhost:5173') return; 
-     authenticated = event.data.token;
+     authenticated = JSON.parse(event.data).token;
      console.log(event.data);
      event.source.postMessage({ type: 'RESPONSE', text: 'Authenticared!' },event.origin);
       }
