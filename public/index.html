@@ -45,13 +45,15 @@
 
 <script src="https://exquisite-seahorse-3a770e.netlify.app/dist/userbird-toolbar.umd.js"></script>
 <script>  
-const cb = (token) => { 
+
   const {UserBirdToolbar} = window.UserBirdToolbar
   const toolbar = new UserBirdToolbar({siteId: 'eKBcpbcg', workspaceId: 'HRkSTkZF'});
+  const cb = (token) => { 
   toolbar.apiToken = token;
   toolbar.init();
-}
-  window.bindEvent(this.window,cb)
+  }
+  toolbar.bindEvent(this.window,cb)
+  
 
   (function() {
     window.staging_userbirdq = window.staging_userbirdq || [];
