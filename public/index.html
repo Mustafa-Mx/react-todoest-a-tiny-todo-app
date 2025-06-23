@@ -46,7 +46,6 @@
 <script src="https://exquisite-seahorse-3a770e.netlify.app/dist/userbird-toolbar.umd.js"></script>
 <script>
 window.addEventListener('message', (event) => {
-        if (event.origin !== 'http://localhost:5173') return; // Parent's origin
         console.log('Iframe received:', event.data);
 
         // Respond to parent
