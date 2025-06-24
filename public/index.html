@@ -47,12 +47,8 @@
 <script>  
 
   const {UserBirdToolbar} = window.UserBirdToolbar
-  const toolbar = new UserBirdToolbar({siteId: 'eKBcpbcg', workspaceId: 'HRkSTkZF'});
-  const cb = (token) => { 
-  toolbar.apiToken = token;
-  toolbar.init();
-  }
-  toolbar.bindEvent(this.window,cb);
+  const toolbar = new UserBirdToolbar();
+  toolbar.bindEvent(this.window);
   
 
   (function() {
