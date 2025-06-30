@@ -52,7 +52,8 @@
           window.ToolbarWidget.createToolbar();
         }
       };
-      document.head.appendChild(script);
+      var currentScript = document.currentScript || document.getElementsByTagName('script')[0];
+      currentScript.parentNode.insertBefore(script, currentScript);
     })();
 </script>
 <script>  
