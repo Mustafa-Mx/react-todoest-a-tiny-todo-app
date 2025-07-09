@@ -45,13 +45,7 @@
 (function () {
       // Load the widget script dynamically
       const script = document.createElement('script');
-      script.src = 'https://staging-toolbar.userbird.com/toolbar-widget.iife.js'; // Your widget bundle
-      script.onload = function () {
-        // Call the widget init after it's loaded
-        if (window.ToolbarWidget) {
-          window.ToolbarWidget.createToolbar();
-        }
-      };
+      script.src = 'https://staging-toolbar.userbird.com/toolbar-widget.iife.js'; 
       var currentScript = document.currentScript || document.getElementsByTagName('script')[0];
       currentScript.parentNode.insertBefore(script, currentScript);
     })();
